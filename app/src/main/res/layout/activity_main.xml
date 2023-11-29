@@ -10,17 +10,17 @@
     android:gravity="center"
     android:padding="10dp"
 
-    android:background="@drawable/appbg">
+    android:background="@drawable/loginbackgroungimage">
 
 
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:gravity="center"
-        app:lottie_rawRes="@raw/signupprofile"
+        app:lottie_rawRes="@raw/loginanimation"
         app:lottie_autoPlay="true"
-        android:layout_marginTop="-50dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginBottom="50dp"
 
         />
 
@@ -38,7 +38,10 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/loginacc"
             android:hint="User Name "
-            android:textColor="@color/black" />
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+
+            />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -46,6 +49,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:helperText="Required"
             app:passwordToggleEnabled="true"
+
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -54,7 +58,10 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/passwordicon"
                 android:hint="User Password"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:textColorHint="@color/white"
+                android:textColor="@color/white"
+               />
         </com.google.android.material.textfield.TextInputLayout>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,9 +70,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:backgroundTint="#A85151"
-
-        android:text="Login" />
+        android:backgroundTint="@color/fontColorofApp"
+        android:text="Login"
+        android:textColor="@color/black"/>
 
 
     <TextView
@@ -74,6 +81,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="New User? Sign Up here"
-        android:textColor="@color/white" />
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
 </LinearLayout>
 

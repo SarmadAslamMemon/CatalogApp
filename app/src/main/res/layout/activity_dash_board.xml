@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DashBoard"
-    android:background="#1E384B">
+    android:background="#1E384B"
+    android:padding="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,45 +15,71 @@
         android:orientation="horizontal"
         android:layout_weight="1">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:gravity="center"
-        >
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:backgroundTint="@color/cardbackground"
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/addcaticon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            app:lottie_rawRes="@raw/buyproduct"
-            android:onClick="addcaticon"
+            android:id="@+id/addCategoryCard"
+            android:onClick="addCategoryCard"
+            >
 
-            />
+            <LinearLayout
 
-        <TextView
-                android:id="@+id/addcattext"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:text="Add Category"
-                android:textSize="20dp"
-                android:onClick="addcattext"
+                android:orientation="vertical"
+                >
 
 
-                />
-0
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    app:lottie_rawRes="@raw/addcategoryanim"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Add Category"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    />
+
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
 
 
 
-
-    </LinearLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:backgroundTint="@color/cardbackground"
+            android:id="@+id/showCategoryCard"
+            android:onClick="showCategoryCard"
+            >
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -61,19 +88,15 @@
             >
 
 
-
-
-
-
-
             <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
                 app:lottie_rawRes="@raw/showcat"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
 
                 />
-
 
             <TextView
                 android:layout_marginTop="10dp"
@@ -82,7 +105,8 @@
                 android:gravity="center"
                 android:text="Show Category"
                 android:textSize="20dp"
-
+                android:textStyle="bold"
+                android:textColor="@color/black"
 
                 />
 
@@ -91,7 +115,7 @@
 
 
         </LinearLayout>
-
+        </com.google.android.material.card.MaterialCardView>
 
 
 
@@ -101,6 +125,25 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_weight="1">
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:backgroundTint="@color/cardbackground"
+
+            android:id="@+id/addProductCard"
+            android:onClick="addProductCard"
+            >
+
+
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,11 +160,12 @@
 
 
             <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
                 app:lottie_rawRes="@raw/product"
                 app:lottie_autoPlay="true"
+                app:lottie_loop="true"
 
                 />
 
@@ -133,15 +177,27 @@
                 android:gravity="center"
                 android:text="Add Product"
                 android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
 
 
                 />
 
-
-
-
-
         </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:backgroundTint="@color/cardbackground"
+
+            android:id="@+id/showProductCard"
+            android:onClick="showProductCard"
+            >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -157,11 +213,12 @@
 
 
             <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
                 app:lottie_rawRes="@raw/bganime"
                 app:lottie_autoPlay="true"
+                app:lottie_loop="true"
 
                 />
 
@@ -173,7 +230,8 @@
                 android:gravity="center"
                 android:text="Show Product"
                 android:textSize="20dp"
-
+                android:textStyle="bold"
+                android:textColor="@color/black"
 
                 />
 
@@ -182,6 +240,9 @@
 
 
         </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
 
 
 

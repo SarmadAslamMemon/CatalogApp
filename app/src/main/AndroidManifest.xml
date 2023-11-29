@@ -12,6 +12,15 @@
         android:theme="@style/Theme.CatalogApp"
         tools:targetApi="31">
         <activity
+            android:name=".showProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".addProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".showCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".addCategoryActivity"
             android:exported="false" />
         <activity

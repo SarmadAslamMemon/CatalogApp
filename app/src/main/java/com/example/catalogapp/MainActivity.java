@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     TextView nextsignup;
     Button btn;
     EditText username,userpassword;
+    ProgressDialog myprogress;
 
 
 
@@ -47,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
                                            userpassword.setError("Username required");
                                        } else {
 
+
+
+
+ //Alert Dialogue box code
 //                    AlertDialog.Builder alert= new AlertDialog.Builder(MainActivity.this);
 //                    alert.setTitle("Login Details");
 //                    alert.setMessage("My username is"+name+" and password is"+pass );
@@ -61,28 +67,26 @@ public class MainActivity extends AppCompatActivity {
 //                    });
 //
 //                    AlertDialog alertDialog=alert.create();
-//                    alertDialog.show();
-//
-
-//                    ProgressDialog myprogress = new ProgressDialog(MainActivity.this);
-//                    myprogress.setTitle("Please Wait");
-//                    myprogress.setMessage("While Data is Processing");
-//                    myprogress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//                    myprogress.show();
-
+//                    alertDialog.show();   ?? Aler
 
                                            String uname = "sarmadaslammemon@gmail.com";
                                            String upass = "12345";
                                            if (name.equalsIgnoreCase(uname) && pass.equalsIgnoreCase(upass)) {
 
 
+
+                                               Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+
                                                Intent i = new Intent(MainActivity.this, DashBoard.class);
                                                startActivity(i);
 
 
+
                                            } else {
 
-                                               Toast.makeText(MainActivity.this, "Invalid username or pass", Toast.LENGTH_SHORT).show();
+
+
+
 
                                            }
 
@@ -109,4 +113,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 }
