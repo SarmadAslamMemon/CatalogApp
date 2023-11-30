@@ -40,4 +40,6 @@ dependencies {
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 
+    implementation 'com.android.volley:volley:1.2.1'
+
 }
