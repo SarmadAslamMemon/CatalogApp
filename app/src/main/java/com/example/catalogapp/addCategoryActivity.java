@@ -25,16 +25,15 @@ import java.util.Map;
 
 public class addCategoryActivity extends AppCompatActivity {
 
-    String str_cat_name;
-    String url="https://roughlyandriodapp.000webhostapp.com/addCategory.php";
-    EditText cat_Name;
+
+    String url="https://roughlyandriodapp.000webhostapp.com/connect.php";
+    EditText catagoryname;
     Button btnAddCat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_category);
-
-         cat_Name=findViewById(R.id.addCategoryName);
+         catagoryname=findViewById(R.id.addCategoryName);
          btnAddCat=findViewById(R.id.addCategoryBtn);
 
 
@@ -44,18 +43,20 @@ public class addCategoryActivity extends AppCompatActivity {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
 
-
         btnAddCat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 str_cat_name= cat_Name.getText().toString();
+                String  nametxt= catagoryname.getText().toString();
+
                 progressDialog.show();
                 StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
-                        Toast.makeText(addCategoryActivity.this,response, Toast.LENGTH_SHORT).show();
-                        cat_Name.setText(" ");
+
+
+                        Toast.makeText(addCategoryActivity.this,nametxt+"added ", Toast.LENGTH_SHORT).show();
+                        catagoryname.setText(" ");
 
                     }
                 }, new Response.ErrorListener() {
@@ -71,18 +72,23 @@ public class addCategoryActivity extends AppCompatActivity {
                 ){
                     @Nullable
                     @Override
-                    protected Map<String, String> getPostParams() throws AuthFailureError {
-                      Map <String,String> params= new HashMap<String,String>();
-                      params.put("category_Name",str_cat_name);
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                      Map <String,String> params= new HashMap<>();
+                      params.put("cat_name",nametxt);
                       return  params;
                     }
                 };
 
-                RequestQueue requestQueue= Volley.newRequestQueue(addCategoryActivity.this);
-                requestQueue.add(request);
+                RequestQueue rQueue= Volley.newRequestQueue(addCategoryActivity.this);
+                rQueue.add(request);
+
+
 
             }
         });
+
+
+
 
 
 
