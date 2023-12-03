@@ -1,7 +1,9 @@
 package com.example.catalogapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +12,20 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Signup extends AppCompatActivity {
 
+    String url="https://roughlyandriodapp.000webhostapp.com/userSignup.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +33,7 @@ public class Signup extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
 
+          // Get Refrence of objects
         TextView txt=findViewById(R.id.nextLoginText);
         Button btnSignUp=findViewById(R.id.btnSignUp);
         EditText userSpName=findViewById(R.id.userSignupName);
@@ -26,6 +41,12 @@ public class Signup extends AppCompatActivity {
         EditText userSpConfirmPass=findViewById(R.id.userSignupConfirmPass);
 
 
+
+
+
+        ProgressDialog progressDialog= new ProgressDialog(Signup.this);
+        progressDialog.setTitle("Please wait");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -50,24 +71,61 @@ public class Signup extends AppCompatActivity {
 
                 } else {
 
-                    if(pass.equalsIgnoreCase(cpass))
+                    if(!pass.equalsIgnoreCase(cpass))
                     {
 
 
-                        Toast.makeText(Signup.this, "Sign Up Successfully", Toast.LENGTH_SHORT).show();
+                        userSpConfirmPass.setError("Password does`nt match");
 
 
                     }else {
-                        userSpConfirmPass.setError("Password does`nt match");
+
+                        progressDialog.show();
+
+                        StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
+                            progressDialog.dismiss();
+                            Toast.makeText(Signup.this,"Successfully Sign Up", Toast.LENGTH_SHORT).show();
+                            userSpName.setText("");
+                            userSpPass.setText("");
+                            userSpConfirmPass.setText("");
+
+                            Intent i= new Intent(Signup.this,MainActivity.class);
+                            startActivity(i);
+                            finish();
+
+
+
+                        }, error -> {
+                            progressDialog.dismiss();
+                            Toast.makeText(Signup.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+
+
+                        }
+
+
+                        ){
+                            @Nullable
+                            @Override
+                            protected Map<String, String> getParams() {
+                                Map <String,String> params= new HashMap<>();
+                                params.put("userSignUpName",name);
+                                params.put("userSignUpPass",pass);
+                                return  params;
+                            }
+                        };
+
+                        RequestQueue rQueue= Volley.newRequestQueue(Signup.this);
+                        rQueue.add(request);
+
+
                     }
 
 
 
 
 
-
-                }
-            }
+                        }
+                    }
 
 
 
@@ -77,14 +135,17 @@ public class Signup extends AppCompatActivity {
 
 
 
-        txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(Signup.this, MainActivity.class);
-                startActivity(i);
-                finish();
-            }
+        txt.setOnClickListener(v -> {
+            Intent i= new Intent(Signup.this, MainActivity.class);
+            startActivity(i);
+            finish();
         });
+
+
     }
 
+
+
+
 }
+

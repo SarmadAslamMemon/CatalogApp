@@ -9,9 +9,60 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="10dp"
-
     android:background="@drawable/loginbackgroungimage">
 
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/nowifilayout"
+        android:visibility="gone"
+      >
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/nowifianime"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        app:lottie_rawRes="@raw/nowifi"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No internet!"
+        android:textSize="23dp"
+        android:textAlignment="center"
+        android:textColor="#F32F2F"
+        android:textStyle="italic"
+        />
+        <Button
+
+            android:layout_marginTop="20dp"
+            android:id="@+id/retryBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retry"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/fontColorofApp"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="5dp"
+        android:id="@+id/LoginLayout">
 
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="150dp"
@@ -84,5 +135,7 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         />
+
+    </LinearLayout>
 </LinearLayout>
 

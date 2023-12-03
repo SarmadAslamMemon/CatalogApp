@@ -6,20 +6,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 public class MainActivity extends AppCompatActivity {
     TextView nextsignup;
-    Button btn;
+    Button btnLogin,btnRetry;
     EditText username,userpassword;
-    ProgressDialog myprogress;
+    LinearLayout lnNoWifi,lnLogin;
 
 
 
@@ -28,11 +32,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        lnNoWifi=findViewById(R.id.nowifilayout);
+        lnLogin=findViewById(R.id.LoginLayout);
         nextsignup=findViewById(R.id.nextsignup);
-        btn=findViewById(R.id.btnlogin);
+        btnLogin=findViewById(R.id.btnlogin);
+        btnRetry=findViewById(R.id.retryBtn);
         username=findViewById(R.id.userloginname);
         userpassword=findViewById(R.id.userloginpass);
-        btn.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+
+
+
+
+
+
+
+
+        if(!isConnected()){
+
+            lnLogin.setVisibility(View.INVISIBLE);
+            lnNoWifi.setVisibility(View.VISIBLE);
+
+        }
+
+
+
+        btnRetry.setOnClickListener(v -> {
+            if(isConnected()){
+                lnNoWifi.setVisibility(View.GONE);
+                lnLogin.setVisibility(View.VISIBLE);
+            }
+
+
+        });
+
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
 
                                    @Override
                                    public void onClick(View view) {
@@ -79,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
                                                Intent i = new Intent(MainActivity.this, DashBoard.class);
                                                startActivity(i);
+                                               finish();
 
 
 
@@ -101,18 +141,28 @@ public class MainActivity extends AppCompatActivity {
 
                                });
 
-
         nextsignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent i= new Intent(MainActivity.this,Signup.class);
                 startActivity(i);
+                finish();
 
             }
         });
 
+
+
+
+
+
     }
 
+    private boolean isConnected() {
 
+        ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(this.CONNECTIVITY_SERVICE);
+
+        return connectivityManager.getActiveNetworkInfo()!=null && connectivityManager.getActiveNetworkInfo().isConnectedOrConnecting();
+    }
 }
