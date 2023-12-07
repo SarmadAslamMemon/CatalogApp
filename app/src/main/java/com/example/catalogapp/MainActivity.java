@@ -116,7 +116,15 @@ public class MainActivity extends AppCompatActivity {
 
                 StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
                 progressDialog.dismiss();
-                Toast.makeText(MainActivity.this,"Login Successfully" , Toast.LENGTH_SHORT).show();
+
+                if(response.equalsIgnoreCase("success"))
+                {
+                    Intent i= new Intent(MainActivity.this,DashBoard.class);
+                    startActivity(i);
+                }else
+                {
+                    Toast.makeText(MainActivity.this,"Invalid Username or Password" , Toast.LENGTH_SHORT).show();
+                }
 
             }, error -> {
                 progressDialog.dismiss();
@@ -125,7 +133,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-            ) {
+            )
+                {
                 @Nullable
                 @Override
                 protected Map<String, String> getParams() {

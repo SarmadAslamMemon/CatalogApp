@@ -69,16 +69,12 @@ public class Signup extends AppCompatActivity {
                     userSpConfirmPass.requestFocus();
                     userSpConfirmPass.setError("Confirm Password  required");
 
-                } else {
-
-                    if(!pass.equalsIgnoreCase(cpass))
-                    {
-
+                } else if(!pass.equalsIgnoreCase(cpass)){
 
                         userSpConfirmPass.setError("Password does`nt match");
 
-
-                    }else {
+                }
+                else {
 
                         progressDialog.show();
 
@@ -125,7 +121,7 @@ public class Signup extends AppCompatActivity {
 
 
                         }
-                    }
+
 
 
 
